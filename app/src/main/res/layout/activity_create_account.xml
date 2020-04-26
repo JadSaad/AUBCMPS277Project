@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFFFFF"
-    tools:context=".CreateAccountActivity">
+    tools:context="com.example.songsapp.CreateAccountActivity">
 
     <Button
         android:id="@+id/buttonCreateInCreate"
@@ -15,7 +15,7 @@
         android:layout_marginTop="25dp"
         android:layout_marginEnd="10dp"
         android:background="@drawable/roundbutton"
-        android:backgroundTint="#DD2C00"
+        android:backgroundTint="#2962FF"
         android:text="  Create Account  "
         android:textColor="#FFFFFF"
         android:textSize="18sp"
@@ -34,7 +34,7 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@mipmap/loginlogo_foreground" />
+        app:srcCompat="@mipmap/ic_mainsongsapplogo" />
 
     <EditText
         android:id="@+id/editTextFirstName"
@@ -44,7 +44,7 @@
         android:layout_marginTop="25dp"
         android:layout_marginEnd="100dp"
         android:ems="10"
-        android:hint="First Name"
+        android:hint="First Name*"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -58,7 +58,7 @@
         android:layout_marginTop="20dp"
         android:layout_marginEnd="100dp"
         android:ems="10"
-        android:hint="Last Name"
+        android:hint="Last Name*"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -72,7 +72,7 @@
         android:layout_marginTop="20dp"
         android:layout_marginEnd="100dp"
         android:ems="10"
-        android:hint="Username"
+        android:hint="Username*"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -86,7 +86,7 @@
         android:layout_marginTop="20dp"
         android:layout_marginEnd="100dp"
         android:ems="10"
-        android:hint="Password"
+        android:hint="Password*"
         android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -100,7 +100,7 @@
         android:layout_marginTop="20dp"
         android:layout_marginEnd="100dp"
         android:ems="10"
-        android:hint="Retype Password"
+        android:hint="Retype Password*"
         android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="#FFFFFF"
     tools:actionBarNavMode="tabs"
-    tools:context=".MainActivity"
+    tools:context="com.example.songsapp.MainActivity"
     tools:layout_editor_absoluteY="25dp">
 
     <EditText
@@ -21,6 +21,7 @@
         android:hint="   Username"
         android:inputType="textPersonName"
         android:textAlignment="viewStart"
+        android:textColorLink="#6200EA"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/LogInLogo" />
@@ -48,7 +49,7 @@
         android:layout_marginTop="20dp"
         android:layout_marginEnd="50dp"
         android:background="@drawable/roundbutton"
-        android:backgroundTint="#DD2C00"
+        android:backgroundTint="#2E66FD"
         android:text="   Log In   "
         android:textColor="#FFFFFF"
         android:textSize="18sp"
@@ -74,11 +75,15 @@
         android:layout_marginStart="10dp"
         android:layout_marginTop="120dp"
         android:layout_marginEnd="10dp"
+        android:background="#FFFFFF"
+        android:backgroundTint="#FFFFFF"
+        android:backgroundTintMode="multiply"
+        android:foreground="@mipmap/ic_mainsongsapplogo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@mipmap/loginlogo_foreground" />
+        app:srcCompat="@mipmap/ic_songsapplogo_round" />
 
     <Button
         android:id="@+id/buttonCreateAccount"
@@ -92,7 +97,7 @@
         android:background="#FFFFFF"
         android:text="   Create Account   "
         android:textAllCaps="true"
-        android:textColor="#0091EA"
+        android:textColor="#D50000"
         android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
