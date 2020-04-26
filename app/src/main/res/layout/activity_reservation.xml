@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ReservationActivity">
+
+    <Button
+        android:id="@+id/buttonReserve"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/roundbutton"
+        android:backgroundTint="#DD2C00"
+        android:text="  Reserve   "
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.06"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.94" />
+
+    <Space
+        android:id="@+id/space"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="25dp"
+        app:layout_constraintBottom_toTopOf="@+id/buttonReserve"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/editTextCheckIn"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="150dp"
+        android:backgroundTint="#DD2C00"
+        android:drawableRight="@android:drawable/ic_menu_my_calendar"
+        android:ems="10"
+        android:hint="CheckIn Date"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/buttonReserve"
+        app:layout_constraintEnd_toStartOf="@+id/space"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/editTextCheckOut"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="150dp"
+        android:backgroundTint="#DD2C00"
+        android:drawableRight="@android:drawable/ic_menu_my_calendar"
+        android:ems="10"
+        android:hint="CheckOut Date"
+        app:layout_constraintBottom_toTopOf="@+id/buttonReserve"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/space" />
+
+    <FrameLayout
+        android:id="@+id/SlideFrame"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="25dp"
+        app:layout_constraintBottom_toTopOf="@+id/editTextCheckIn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewHotelName">
+
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/view_pager_slider"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/textViewHotelName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:fontFamily="sans-serif-condensed-medium"
+        android:text="Hotel Name"
+        android:textColor="#000000"
+        android:textSize="30dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="60dp"
+        app:layout_constraintBottom_toTopOf="@+id/buttonReserve"
+        app:layout_constraintStart_toStartOf="@+id/editTextCheckIn"
+        app:layout_constraintTop_toBottomOf="@+id/editTextCheckIn">
+
+        <RadioButton
+            android:id="@+id/radioButtonSingle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:buttonTint="#DD2C00"
+            android:text="Single" />
+
+        <RadioButton
+            android:id="@+id/radioButtonDouble"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:buttonTint="#DD2C00"
+            android:text="Double" />
+
+        <RadioButton
+            android:id="@+id/radioButtonTriple"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:buttonTint="#DD2C00"
+            android:text="Triple" />
+    </RadioGroup>
+
+    <CheckBox
+        android:id="@+id/checkBoxCleaning"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:buttonTint="#DD2C00"
+        android:checked="false"
+        android:clickable="false"
+        android:text="Daily Cleaning"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="@+id/editTextCheckOut"
+        app:layout_constraintTop_toTopOf="@+id/radioGroup" />
+
+    <CheckBox
+        android:id="@+id/checkBoxCWifi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:buttonTint="#DD2C00"
+        android:checked="false"
+        android:clickable="false"
+        android:focusable="false"
+        android:text="Wifi"
+        app:layout_constraintStart_toStartOf="@+id/editTextCheckOut"
+        app:layout_constraintTop_toBottomOf="@+id/checkBoxCleaning" />
+
+    <CheckBox
+        android:id="@+id/checkBoxBAR"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:buttonTint="#DD2C00"
+        android:checked="false"
+        android:text="Mini Bar"
+        android:clickable="false"
+        app:layout_constraintStart_toStartOf="@+id/editTextCheckOut"
+        app:layout_constraintTop_toBottomOf="@+id/checkBoxCWifi" />
+
+    <CheckBox
+        android:id="@+id/checkBoxExtraBed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:buttonTint="#00C853"
+        android:checked="false"
+        android:text="Check for Extra Bed"
+        app:layout_constraintStart_toStartOf="@+id/checkBoxBAR"
+        app:layout_constraintTop_toBottomOf="@+id/checkBoxBAR" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
