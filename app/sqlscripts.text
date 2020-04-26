@@ -1,7 +1,26 @@
-Create Users Table
+--Create Users Table
 CREATE TABLE Users(
 username varchar(200) Primary Key,
 password varchar(200),
 firstname varchar(200),
 lastname varchar(200)
 );
+
+--Create Artists Table
+CREATE TABLE Artists(
+artistid int AUTO_INCREMENT,
+name varchar(200),
+imageurl varchar(200),
+PRIMARY KEY (artistid)
+);
+
+--Create Artists Table
+CREATE TABLE Album(
+albumid int AUTO_INCREMENT,
+name varchar(200),
+artistid int,
+FOREIGN KEY (artistid) REFERENCES Artists(artistid).
+PRIMARY KEY (albumid)
+);
+
+--

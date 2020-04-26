@@ -1,8 +1,8 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 29
-    buildToolsVersion "29.0.2"
+    compileSdkVersion 28
+    buildToolsVersion '28.0.3'
     defaultConfig {
         applicationId "com.example.bookitapp"
         minSdkVersion 21
@@ -28,4 +28,5 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
     implementation 'com.google.android.material:material:1.1.0-alpha06'
     implementation files('libs/mysql-connector-java-5.1.48.jar')
+    implementation 'com.squareup.picasso:picasso:2.71828'
 }
