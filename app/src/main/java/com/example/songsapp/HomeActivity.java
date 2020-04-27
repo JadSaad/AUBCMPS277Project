@@ -51,6 +51,17 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
+        artistsButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                new GetFollowedArtists().execute();
+            }
+        });
+
+        likesButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                new GetLikedSongs().execute();
+            }
+        });
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -154,6 +165,93 @@ public class HomeActivity extends AppCompatActivity {
         protected void onPostExecute(ArrayList<Song> songList) {
             dialog.dismiss();
             SongAdapter adapter= new SongAdapter(songList,getApplicationContext());
+            listview.setAdapter(adapter);
+        }
+    }
+
+    public class GetLikedSongs extends AsyncTask<String, Void, ArrayList<Song>> {
+        ProgressDialog dialog = new ProgressDialog(HomeActivity.this);
+        @Override
+        protected void onPreExecute() {
+            dialog.setMessage("Loading...");
+            dialog.show();
+        }
+
+        @Override
+        protected ArrayList<Song> doInBackground(String ...params) {
+            ArrayList<Song> songList = new ArrayList<>();
+            try {
+                ConnectionClass c = new ConnectionClass();
+                Connection con = c.CONN();
+                Statement st = con.createStatement();
+                ResultSet songs = st.executeQuery("select a.artistid, a.name, a.imageurl, s.songid, s.name, s.releasedate, s.audio, s.duration from artists a, songs s, likes l where (s.artistid = a.artistid) and (s.songid = l.songid) and (l.username = '" + UserInfo.shared.username + "');");
+                while (songs.next()) {
+                    int artistid = songs.getInt("a.artistid");
+                    String artistname = songs.getString("a.name");
+                    String imageUrl = songs.getString("a.imageurl");
+                    Artist artist = new Artist();
+                    artist.id = artistid; artist.name = artistname; artist.imageUrl = imageUrl;
+                    Song song = new Song();
+                    song.artist = artist;
+                    song.name = songs.getString("s.name");
+                    song.songid = songs.getInt("s.songid");
+                    song.audioUrl = songs.getString("s.audio");
+                    song.duration = songs.getInt("s.duration");
+                    song.date = songs.getString("s.releasedate");
+                    songList.add(song);
+                }
+                con.close();
+            } catch (Exception e) {
+                //Handle Exception
+            }
+            return songList;
+        }
+
+
+        @Override
+        protected void onPostExecute(ArrayList<Song> songList) {
+            dialog.dismiss();
+            SongAdapter adapter= new SongAdapter(songList,getApplicationContext());
+            listview.setAdapter(adapter);
+        }
+    }
+
+    public class GetFollowedArtists extends AsyncTask<String, Void, ArrayList<Artist>> {
+        ProgressDialog dialog = new ProgressDialog(HomeActivity.this);
+        @Override
+        protected void onPreExecute() {
+            dialog.setMessage("Loading...");
+            dialog.show();
+        }
+
+        @Override
+        protected ArrayList<Artist> doInBackground(String ...params) {
+            ArrayList<Artist> artistList = new ArrayList<Artist>();
+            try {
+                ConnectionClass c = new ConnectionClass();
+                Connection con = c.CONN();
+                Statement st = con.createStatement();
+                ResultSet artists = st.executeQuery("select a.artistid, a.name, a.imageurl from artists a, follow f where a.artistid = f.artistid and f.username = '" + UserInfo.shared.username + "';");
+                while (artists.next()) {
+                    int id = artists.getInt("a.artistid");
+                    String name = artists.getString("a.name");
+                    String imageUrl = artists.getString("a.imageurl");
+                    Artist artist = new Artist();
+                    artist.id = id; artist.name = name; artist.imageUrl = imageUrl;
+                    artistList.add(artist);
+                }
+                con.close();
+            } catch (Exception e) {
+                //Handle Exception
+            }
+            return artistList;
+        }
+
+
+        @Override
+        protected void onPostExecute(ArrayList<Artist> artistList) {
+            dialog.dismiss();
+            ArtistAdapter adapter= new ArtistAdapter(artistList,getApplicationContext());
             listview.setAdapter(adapter);
         }
     }

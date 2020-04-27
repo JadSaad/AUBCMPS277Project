@@ -15,12 +15,41 @@ PRIMARY KEY (artistid)
 );
 
 --Create Artists Table
-CREATE TABLE Album(
+CREATE TABLE Albums(
 albumid int AUTO_INCREMENT,
 name varchar(200),
 artistid int,
-FOREIGN KEY (artistid) REFERENCES Artists(artistid).
+FOREIGN KEY (artistid) REFERENCES Artists(artistid),
 PRIMARY KEY (albumid)
 );
 
---
+-Create Songs Table
+CREATE TABLE Songs(
+songid int AUTO_INCREMENT,
+name varchar(200),
+lyrics Text,
+duration int,
+releasedate varchar(100),
+audio varchar(255),
+albumid int,
+artistid int,
+FOREIGN KEY (artistid) REFERENCES Artists(artistid),
+FOREIGN KEY (albumid) REFERENCES Albums(albumid),
+PRIMARY KEY (songid)
+);
+
+CREATE TABLE Follow(
+artistid int,
+username varchar(200),
+FOREIGN KEY (artistid) REFERENCES Artists(artistid),
+FOREIGN KEY (username) REFERENCES Users(username),
+PRIMARY KEY (artistid, username)
+);
+
+CREATE TABLE Like(
+songid int,
+username varchar(200),
+FOREIGN KEY (songid) REFERENCES Songs(songid),
+FOREIGN KEY (username) REFERENCES Users(username),
+PRIMARY KEY (songid, username)
+);
