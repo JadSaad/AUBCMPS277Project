@@ -53,3 +53,19 @@ FOREIGN KEY (songid) REFERENCES Songs(songid),
 FOREIGN KEY (username) REFERENCES Users(username),
 PRIMARY KEY (songid, username)
 );
+
+CREATE TABLE Playlist( 
+PlaylistID int, 
+Name varchar(200),
+FOREIGN KEY (Username) REFERENCES Users(username)
+);
+
+CREATE TABLE Genres(
+GenreID int,
+FOREIGN KEY(Song ID) REFERENCES Songs(songid)
+);
+
+CREATE TABLE belong_to(
+FOREIGN KEY(Song ID) REFERENCES Songs(songid),
+FOREIGN KEY(PlaylistID) REFERENCES Playlist(PlaylistID)
+);
